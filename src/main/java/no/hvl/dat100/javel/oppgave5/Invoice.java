@@ -1,7 +1,9 @@
 package no.hvl.dat100.javel.oppgave5;
 
+import no.hvl.dat100.javel.oppgave1.DailyPower;
 import no.hvl.dat100.javel.oppgave3.Customer;
 import no.hvl.dat100.javel.oppgave2.MonthlyPower;
+import no.hvl.dat100.javel.oppgave3.PowerAgreementType;
 
 import java.util.Locale;
 
@@ -16,32 +18,34 @@ public class Invoice {
 
 
     public Invoice(Customer c, String month, double[][] usage, double[][] power_prices) {
-     for (int i = 0; i < usage.length; i++) {
-            if (usage[i].length != 24) {
-                throw new IllegalArgumentException("Each day must have 24 hours of usage data.");
-            }
-        }
-        for (int i = 0; i < power_prices.length; i++) {
-            if (power_prices[i].length != 24) {
-                throw new IllegalArgumentException("Each day must have 24 hours of price data.");
-            }
-        }
-
         this.c = c;
         this.month = month;
         this.usage = usage;
         this.prices = power_prices;
+        this.amount = 0;
+
     }
 
     public void computeAmount() {
-        amount = 0;
 
         switch (c.getAgreement()) {
-            case SPOTPRICE -> amount = MonthlyPower.computeSpotPrice(usage, prices);
-            case POWERSUPPORT -> amount = MonthlyPower.computeSpotPrice(usage, prices)
-                    - MonthlyPower.computePowerSupport(usage, prices);
-            case NORGESPRICE -> amount = MonthlyPower.computeNorgesPrice(usage);
+
+            case NORGESPRICE:
+                amount = MonthlyPower.computeNorgesPrice(usage);
+                break;
+
+            case POWERSUPPORT:
+                amount = MonthlyPower.computePowerSupport(usage, prices);
+                break;
+
+            default:
+                amount = MonthlyPower.computeSpotPrice(usage, prices);
         }
+
+    }
+
+    public double getAmount() {
+        return amount;
     }
 
     public void printInvoice() {

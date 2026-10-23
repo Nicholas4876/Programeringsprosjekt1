@@ -55,20 +55,19 @@ public class DailyPower {
     private static final double THRESHOLD = 0.9375;
     private static final double PERCENTAGE = 0.9;
 
-    private static double getSupport(double usage, double price) {
-        return usage * Math.max(price - THRESHOLD, 0) * PERCENTAGE;
+    private static double getPriceAfterSupport(double usage, double price) {
+        double supportPerKwh = Math.max(0, price - THRESHOLD) * PERCENTAGE; // Hvis price < THRESHOLD: ingen støtte.
+        return usage * (price - supportPerKwh); // Returnerer pris etter strømstøtten.
     }
 
-    // f) compute power support for a single day
     public static double computePowerSupport(double[] usage, double[] prices) {
-
-        double support = 0;
+        double total = 0;
 
         for (int h = 0; h < DAY_HOURS; h++) {
-            support += getSupport(usage[h], prices[h]);
+            total += getPriceAfterSupport(usage[h], prices[h]);
         }
 
-        return support;
+        return total;
     }
 
     private static final double NORGESPRIS_KWH = 0.5;

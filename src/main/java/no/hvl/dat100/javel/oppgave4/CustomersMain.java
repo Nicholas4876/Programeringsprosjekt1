@@ -28,41 +28,35 @@ public class CustomersMain {
         System.out.println("removeCustomer on empty table: " + customers.removeCustomer(1));
         System.out.println("getCustomers on empty table: "
                 + Arrays.toString(customers.getCustomers()));
-        System.out.println("addCustomer (null): " + customers.addCustomer(null));
-        System.out.println();
 
-        System.out.println("addCustomer (Nicholas): " + customers.addCustomer(nicholas));
+        System.out.println("\naddCustomer (Nicholas): " + customers.addCustomer(nicholas));
         System.out.println("addCustomer (Sara): " + customers.addCustomer(sara));
         System.out.println("addCustomer (Amir): " + customers.addCustomer(amir));
         System.out.println("countNonNull when full: " + customers.countNonNull());
         System.out.println("addCustomer when full: " + customers.addCustomer(extra));
-        System.out.println();
 
-        System.out.println("getCustomer (id 2):\n" + customers.getCustomer(2));
+        System.out.println("\ngetCustomer (id 2):\n" + customers.getCustomer(2));
         System.out.println("getCustomer (missing id 99): " + customers.getCustomer(99));
-        System.out.println();
 
         Customer[] customerCopy = customers.getCustomers();
-        System.out.println("getCustomers:");
-        printCustomers(customerCopy);
+        System.out.println("\ngetCustomers: " + Arrays.toString(customerCopy));
         customerCopy[0] = null;
         System.out.println("Original table after changing returned array: "
                 + customers.getCustomer(1));
-        System.out.println();
 
-        System.out.println("removeCustomer (id 2):\n" + customers.removeCustomer(2));
+        System.out.println("\nremoveCustomer (id 2):\n" + customers.removeCustomer(2));
         System.out.println("countNonNull after removal: " + customers.countNonNull());
         System.out.println("removeCustomer (missing id 99): " + customers.removeCustomer(99));
         Customer[] afterRemoval = customers.getCustomers();
-        System.out.println("getCustomers after removing id 2 (middle slot):");
-        printCustomers(afterRemoval);
+        System.out.println("getCustomers after removing id 2 (middle slot): "
+                + Arrays.toString(afterRemoval));
         System.out.println("Returned array length: " + afterRemoval.length
                 + " (expected: 2)");
 
         customers.removeCustomer(1);
         Customer[] afterLeadingSlotRemoval = customers.getCustomers();
-        System.out.println("getCustomers after removing id 1 (leading slot):");
-        printCustomers(afterLeadingSlotRemoval);
+        System.out.println("getCustomers after removing id 1 (leading slot): "
+                + Arrays.toString(afterLeadingSlotRemoval));
         System.out.println("Returned array length: " + afterLeadingSlotRemoval.length
                 + " (expected: 1)");
     }
