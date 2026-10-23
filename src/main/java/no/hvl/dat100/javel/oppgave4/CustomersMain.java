@@ -60,4 +60,16 @@ public class CustomersMain {
         System.out.println("Returned array length: " + afterLeadingSlotRemoval.length
                 + " (expected: 1)");
     }
+
+    private static void printCustomers(Customer[] customers) {
+        if (customers.length == 0) {
+            System.out.println("[]");
+            return;
+        }
+
+        for (Customer customer : customers) {
+            System.out.println(customer);
+            System.out.println();
+        }
+     }
 }

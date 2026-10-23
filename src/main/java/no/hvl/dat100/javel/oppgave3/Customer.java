@@ -15,7 +15,7 @@ public class Customer {
         this.agreement = agreement;
     }
 
-    // Getter and setter methods for all object variables
+
     public String getName() {
         return name;
     }
@@ -48,7 +48,6 @@ public class Customer {
         this.agreement = agreement;
     }
 
-    // toString method
   @Override
 public String toString() {
     return "Customer number " + customer_id

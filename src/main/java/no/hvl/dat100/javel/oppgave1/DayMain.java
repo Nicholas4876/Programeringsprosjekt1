@@ -27,10 +27,10 @@ public class DayMain {
         System.out.println("g) Test computeNorgesPrice");
         System.out.println(DailyPower.computeNorgesPrice(powerusage_day));
         System.out.println("--------------");
-        System.out.println("g) Test findPeakUsage");
+        System.out.println("h) Test findPeakUsage");
         System.out.println(DailyPower.findPeakUsage(powerusage_day));
         System.out.println("--------------");
-        System.out.println("Test findAvgPower");
+        System.out.println("i) Test findAvgPower");
         System.out.println(DailyPower.findAvgPower(powerusage_day));
         System.out.println("--------------");
 

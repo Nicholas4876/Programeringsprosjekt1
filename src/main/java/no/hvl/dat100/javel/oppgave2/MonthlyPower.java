@@ -2,6 +2,8 @@ package no.hvl.dat100.javel.oppgave2;
 
 import no.hvl.dat100.javel.oppgave1.DailyPower;
 
+import java.util.Locale;
+
 public class MonthlyPower {
 
     // a) print power usage for a month
@@ -72,4 +74,5 @@ public class MonthlyPower {
         }
         return price;
     }
+
 }

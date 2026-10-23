@@ -1,5 +1,7 @@
 package no.hvl.dat100.javel.oppgave1;
 
+import java.util.Locale;
+
 public class DailyPower {
 
     private static final int DAY_HOURS = 24;
@@ -8,18 +10,18 @@ public class DailyPower {
     public static void printPowerPrices(double[] prices) {
 
         for (int h = 0; h < DAY_HOURS; h++) {
-            System.out.println("Hour " + h + ": " + prices[h] + " kr/kWh");
+            System.out.printf(Locale.ROOT, "%.2f NOK ", prices[h]);
         }
-
+        System.out.println();
     }
 
     // b) print power usage during a day
     public static void printPowerUsage(double[] usage) {
 
         for (int h = 0; h < DAY_HOURS; h++) {
-            System.out.println("Hour " + h + ": " + usage[h] + " kWh");
+            System.out.printf(Locale.ROOT, "%.2f kWh ", usage[h]);
         }
-
+        System.out.println();
     }
 
     // c) compute power usage for a single day
