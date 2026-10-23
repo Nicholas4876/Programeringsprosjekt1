@@ -77,7 +77,9 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            price += DailyPower.computeNorgesPrice(usage[i]);
+        }
 
         return price;
     }

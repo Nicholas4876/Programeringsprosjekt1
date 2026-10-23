@@ -3,7 +3,7 @@ package no.hvl.dat100.javel.oppgave5;
 import no.hvl.dat100.javel.oppgave3.Customer;
 import no.hvl.dat100.javel.oppgave2.MonthlyPower;
 
-import java.util.Arrays;
+import java.util.Locale;
 
 public class Invoice {
 
@@ -34,24 +34,28 @@ public class Invoice {
     }
 
     public void computeAmount() {
-        for (int i = 0; i < usage.length; i++) {
-            for (int j = 0; j < usage[i].length; j++) {
-                amount += usage[i][j] * prices[i][j];
-            }
-        }
-        
+        amount = 0;
 
+        switch (c.getAgreement()) {
+            case SPOTPRICE -> amount = MonthlyPower.computeSpotPrice(usage, prices);
+            case POWERSUPPORT -> amount = MonthlyPower.computeSpotPrice(usage, prices)
+                    - MonthlyPower.computePowerSupport(usage, prices);
+            case NORGESPRICE -> amount = MonthlyPower.computeNorgesPrice(usage);
+        }
     }
 
     public void printInvoice() {
-
+        double totalUsage = 0;
         for (int i = 0; i < usage.length; i++) {
             for (int j = 0; j < usage[i].length; j++) {
-
-
-                
+                totalUsage += usage[i][j];
             }
         }
 
+        System.out.println(c);
+        System.out.println();
+        System.out.println("Month: " + month);
+        System.out.printf(Locale.ROOT, "Usage: %12.2f kWh%n", totalUsage);
+        System.out.printf(Locale.ROOT, "Amount: %12.2f NOK%n", amount);
     }
 }
