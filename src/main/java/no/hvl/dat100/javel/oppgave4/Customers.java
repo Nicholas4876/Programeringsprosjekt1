@@ -17,6 +17,7 @@ public class Customers {
 
         int count = 0;
 
+        // Reads customers, checks for occupied elements and counts them.
         for (Customer c : customers) {
             if (c != null) {
                 count++;
@@ -28,6 +29,7 @@ public class Customers {
     // c) return reference to customer with given id (if exists)
     public Customer getCustomer(int customer_id) {
 
+        // Reads customers, searches for wanted id, returns reference if found, null if not.
         for (Customer c : customers) {
             if (c != null && c.getCustomer_id() == customer_id) {
                 return c;
@@ -41,10 +43,7 @@ public class Customers {
 
         boolean inserted = false;
 
-        if (c == null) {
-            return false;
-        }
-
+        // Searches customers for an empty element (null). If found, inserts customer and returns true, otherwise returns false.
         for (int i = 0; i < customers.length; i++) {
             if (customers[i] == null) {
                 customers[i] = c;
