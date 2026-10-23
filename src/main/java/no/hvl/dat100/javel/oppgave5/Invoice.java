@@ -44,6 +44,10 @@ public class Invoice {
 
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
     public void printInvoice() {
 
         // TODO
