@@ -1,11 +1,8 @@
 package no.hvl.dat100.javel.oppgave5;
 
 import no.hvl.dat100.javel.oppgave3.Customer;
-import no.hvl.dat100.javel.oppgave3.CustomerMain;
 import no.hvl.dat100.javel.oppgave3.PowerAgreementType;
 import no.hvl.dat100.javel.oppgave2.MonthPowerData;
-import no.hvl.dat100.javel.oppgave4.Customers;
-import no.hvl.dat100.javel.oppgave4.CustomersMain;
 
 public class InvoiceMain {
 
@@ -16,26 +13,29 @@ public class InvoiceMain {
         System.out.println("==============");
         System.out.println();
 
+        Customer customer1 = new Customer(
+                "Charlie Rose", "charlie@example.com", 1003,
+                PowerAgreementType.POWERSUPPORT);
+        Customer customer2 = new Customer(
+                "Diana Prince", "diana@example.com", 1004,
+                PowerAgreementType.NORGESPRICE);
+        Customer customer3 = new Customer(
+                "Ethan Hunt", "ethan@example.com", 1005,
+                PowerAgreementType.SPOTPRICE);
 
-        // Invoice.computeAmount test
-        Customer nicholas = new Customer(
-                "Nicholas", "nicholas@example.com", 1, PowerAgreementType.NORGESPRICE);
-        Customer sara = new Customer(
-                "Sara", "sara@example.com", 2, PowerAgreementType.SPOTPRICE);
-        Customer amir = new Customer(
-                "Amir", "amir@example.com", 3, PowerAgreementType.POWERSUPPORT);
+        Invoice[] invoices = {
+                new Invoice(customer1, "January",
+                        CustomerPowerUsageData.usage_month_customer1,
+                        MonthPowerData.powerprices_month),
+                new Invoice(customer2, "January",
+                        CustomerPowerUsageData.usage_month_customer2,
+                        MonthPowerData.powerprices_month),
+                new Invoice(customer3, "January",
+                        CustomerPowerUsageData.usage_month_customer3,
+                        MonthPowerData.powerprices_month)
+        };
 
-        Invoice fakt1 = new Invoice(nicholas, "october", MonthPowerData.powerusage_month, MonthPowerData.powerprices_month);
-        fakt1.computeAmount();
-        System.out.println("Fakturaen til " + nicholas.getName() + " er på " + fakt1.getAmount() + " kr.");
-
-        Invoice fakt2 = new Invoice(sara, "october", MonthPowerData.powerusage_month, MonthPowerData.powerprices_month);
-        fakt2.computeAmount();
-        System.out.println("Fakturaen til " + sara.getName() + " er på " + fakt2.getAmount() + " kr.");
-
-        Invoice fakt3 = new Invoice(amir, "october", MonthPowerData.powerusage_month, MonthPowerData.powerprices_month);
-        fakt3.computeAmount();
-        System.out.println("Fakturaen til " + amir.getName() + " er på " + fakt3.getAmount() + " kr.");
+        Invoices.processInvoices(invoices);
 
     }
 }
