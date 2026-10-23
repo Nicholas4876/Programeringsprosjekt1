@@ -13,12 +13,29 @@ public class InvoiceMain {
         System.out.println("==============");
         System.out.println();
 
-        /*
-        TODO
+        Customer customer1 = new Customer(
+                "Charlie Rose", "charlie@example.com", 1003,
+                PowerAgreementType.POWERSUPPORT);
+        Customer customer2 = new Customer(
+                "Diana Prince", "diana@example.com", 1004,
+                PowerAgreementType.NORGESPRICE);
+        Customer customer3 = new Customer(
+                "Ethan Hunt", "ethan@example.com", 1005,
+                PowerAgreementType.SPOTPRICE);
 
-         Write code that uses the methods implemented in the Invoice-classes
+        Invoice[] invoices = {
+                new Invoice(customer1, "January",
+                        CustomerPowerUsageData.usage_month_customer1,
+                        MonthPowerData.powerprices_month),
+                new Invoice(customer2, "January",
+                        CustomerPowerUsageData.usage_month_customer2,
+                        MonthPowerData.powerprices_month),
+                new Invoice(customer3, "January",
+                        CustomerPowerUsageData.usage_month_customer3,
+                        MonthPowerData.powerprices_month)
+        };
 
-        */
+        Invoices.processInvoices(invoices);
 
     }
 }

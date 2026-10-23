@@ -1,6 +1,7 @@
 package no.hvl.dat100.javel.oppgave2;
 
 import no.hvl.dat100.javel.oppgave1.DayPowerData;
+import no.hvl.dat100.javel.oppgave1.DailyPower;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -15,7 +16,18 @@ public class MonthMain {
         System.out.println("==============");
         System.out.println("OPPGAVE 2");
         System.out.println("==============");
-        System.out.println();
+
+        System.out.println("c) Test computePowerUsage");
+        System.out.println(MonthlyPower.computePowerUsage(power_usage_month));
+        System.out.println("d) Test exceedThreshold");
+        System.out.println(MonthlyPower.exceedThreshold(power_usage_month, 100.0));
+        System.out.println("e) Test computeSpotPrice");
+        System.out.println(MonthlyPower.computeSpotPrice(power_usage_month, power_prices_month));
+        System.out.println("f) Test computePowerSupport");
+        System.out.println(MonthlyPower.computePowerSupport(power_usage_month, power_prices_month));
+
+
+
 
         /*
         TODO

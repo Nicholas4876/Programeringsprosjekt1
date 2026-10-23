@@ -7,7 +7,7 @@ public class MonthlyPower {
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
-        // TODO
+      //TODO
 
     }
 
@@ -23,7 +23,10 @@ public class MonthlyPower {
 
         double sum = 0;
 
-        // TODO
+          for (int i = 0; i < usage.length; i++){
+            sum += DailyPower.computePowerUsage(usage[i]);
+            System.out.println("Day " + (i + 1) + ": " + DailyPower.computePowerUsage(usage[i]) + " kWh");
+        }
 
         return sum;
     }
@@ -34,7 +37,12 @@ public class MonthlyPower {
         boolean exceeded = false;
         double usage = 0;
 
-        // TODO
+        for (int i = 0; i < powerusage.length; i++) {
+            usage += DailyPower.computePowerUsage(powerusage[i]);
+        }
+        if (usage > threshold) {
+            exceeded = true;
+        }
 
         return exceeded;
     }
@@ -44,7 +52,9 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            price += DailyPower.computeSpotPrice(usage[i], prices[i]);
+        }
 
         return price;
     }
@@ -53,8 +63,11 @@ public class MonthlyPower {
     public static double computePowerSupport(double[][] usage, double[][] prices) {
 
         double support = 0;
-
-        // TODO
+        
+        for ( int i=0; i<usage.length;i++) {
+            support += DailyPower.computePowerSupport(usage[i], prices[i]);
+        }
+        
 
         return support;
     }
@@ -68,4 +81,5 @@ public class MonthlyPower {
 
         return price;
     }
+
 }

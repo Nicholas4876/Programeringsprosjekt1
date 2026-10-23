@@ -16,20 +16,42 @@ public class Invoice {
 
 
     public Invoice(Customer c, String month, double[][] usage, double[][] power_prices) {
+     for (int i = 0; i < usage.length; i++) {
+            if (usage[i].length != 24) {
+                throw new IllegalArgumentException("Each day must have 24 hours of usage data.");
+            }
+        }
+        for (int i = 0; i < power_prices.length; i++) {
+            if (power_prices[i].length != 24) {
+                throw new IllegalArgumentException("Each day must have 24 hours of price data.");
+            }
+        }
 
-        // TODO - konstruktør
-
+        this.c = c;
+        this.month = month;
+        this.usage = usage;
+        this.prices = power_prices;
     }
 
     public void computeAmount() {
-
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            for (int j = 0; j < usage[i].length; j++) {
+                amount += usage[i][j] * prices[i][j];
+            }
+        }
+        
 
     }
 
     public void printInvoice() {
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            for (int j = 0; j < usage[i].length; j++) {
+
+
+                
+            }
+        }
 
     }
 }
