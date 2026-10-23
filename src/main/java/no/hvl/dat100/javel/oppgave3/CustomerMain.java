@@ -9,7 +9,6 @@ public class CustomerMain {
         System.out.println("OPPGAVE 3");
         System.out.println("==============");
 
-        // Opprett et Customer-objekt
         Customer customer = new Customer(
             "Nicholas",
             "nicholas@example.com",
@@ -17,7 +16,6 @@ public class CustomerMain {
             PowerAgreementType.SPOTPRICE
         );
 
-        // Test getter-metodene
         System.out.println("a) Test av getter-metoder");
         System.out.println("Name: " + customer.getName());
         System.out.println("Email: " + customer.getEmail());
@@ -26,7 +24,7 @@ public class CustomerMain {
 
         System.out.println("--------------");
 
-        // Test setter-metodene
+    
         System.out.println("b) Test av setter-metoder");
 
         customer.setName("Brage");
@@ -34,7 +32,6 @@ public class CustomerMain {
         customer.setCustomer_id(1002);
         customer.setAgreement(PowerAgreementType.NORGESPRICE);
 
-        // Kontroller at verdiene ble endret
         System.out.println("Name: " + customer.getName());
         System.out.println("Email: " + customer.getEmail());
         System.out.println("Customer ID: " + customer.getCustomer_id());
@@ -42,7 +39,6 @@ public class CustomerMain {
 
         System.out.println("--------------");
 
-        // Test toString()
         System.out.println("c) Test av toString()");
         System.out.println(customer);
     }

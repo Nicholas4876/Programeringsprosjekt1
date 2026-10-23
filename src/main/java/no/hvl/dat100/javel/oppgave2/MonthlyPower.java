@@ -2,30 +2,40 @@ package no.hvl.dat100.javel.oppgave2;
 
 import no.hvl.dat100.javel.oppgave1.DailyPower;
 
+import java.util.Locale;
+
 public class MonthlyPower {
 
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
-      //TODO
-
+        for (int i = 0; i < usage.length; i++) {
+            System.out.print("Day " + (i + 1) + ":");
+            for (double hourlyUsage : usage[i]) {
+                System.out.printf(Locale.ROOT, "%.2f kWh ", hourlyUsage);
+            }
+            System.out.println();
+        }
     }
 
     // b) print power prices for a month
     public static void print_PowerPrices(double[][] prices) {
 
-        // TODO
-
+        for (int i = 0; i < prices.length; i++) {
+            System.out.print("Day " + (i + 1) + ":");
+            for (double hourlyPrice : prices[i]) {
+                System.out.printf(Locale.ROOT, "%.2f kr/kWh ", hourlyPrice);
+            }
+            System.out.println();
+        }
     }
 
     // c) compute total power usage for a month
     public static double computePowerUsage(double[][] usage) {
-
         double sum = 0;
 
-          for (int i = 0; i < usage.length; i++){
-            sum += DailyPower.computePowerUsage(usage[i]);
-            System.out.println("Day " + (i + 1) + ": " + DailyPower.computePowerUsage(usage[i]) + " kWh");
+        for (double[] dailyUsage : usage) {
+            sum += DailyPower.computePowerUsage(dailyUsage);
         }
 
         return sum;
@@ -33,18 +43,15 @@ public class MonthlyPower {
 
     // d) determine whether a given threshold in powerusage for the month has been exceeded
     public static boolean exceedThreshold(double[][] powerusage, double threshold) {
-
-        boolean exceeded = false;
         double usage = 0;
+        int day = 0;
 
-        for (int i = 0; i < powerusage.length; i++) {
-            usage += DailyPower.computePowerUsage(powerusage[i]);
-        }
-        if (usage > threshold) {
-            exceeded = true;
+        while (day < powerusage.length && usage <= threshold) {
+            usage += DailyPower.computePowerUsage(powerusage[day]);
+            day++;
         }
 
-        return exceeded;
+        return usage > threshold;
     }
 
     // e) compute spot price
